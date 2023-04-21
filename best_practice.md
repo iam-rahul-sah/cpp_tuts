@@ -30,3 +30,6 @@
 **Break and continue**
 - Use `break` and `continue` when they simplify your loop logic.
 - User `early return` when they simplify your loop logic.
+
+**Halts(Early exit)**
+- Only use a halt if there is no safe way to return normally from the main function. If you haven't disabled exceptions, prefer using exceptions for handling errors safely.
