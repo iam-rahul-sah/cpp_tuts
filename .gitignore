@@ -1,2 +1,4 @@
 desktop.ini
 *.exe
+.vscode
+C++_tools_and_libraries
