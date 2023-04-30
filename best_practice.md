@@ -62,3 +62,16 @@
 
 **Type deduction for functions**
 - Favour explicit return types over function return type deduction for normal functions.
+
+
+**Function overloading**
+- Use function overloading to make your program simpler.
+
+**Default arguments**
+- If the function has a forward declaration(especially one in a header file), put the default argument there. Otherwise put the default argument in the function definition.
+
+**Function template**
+- Use a single capital letter(starting from T) to name your type template parameters(e.g. T, U, V, etc..)
+- Favour the normal function call syntax when using function teemplates(i.e. use `max()`, instead of `max<int>()`)
+- Template that are needed in mulitiple files should be defined in a header file, and then `#included` wherever needed. This allows the compiler to see full template definition and instantiate the function as needed.
+- Feel free to use abbreviated function template with a single auto parameter, or where each auto parameter should be an independent type(when language standard is set to 20 or newer)
