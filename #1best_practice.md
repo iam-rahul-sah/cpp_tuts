@@ -75,3 +75,16 @@
 - Favour the normal function call syntax when using function teemplates(i.e. use `max()`, instead of `max<int>()`)
 - Template that are needed in mulitiple files should be defined in a header file, and then `#included` wherever needed. This allows the compiler to see full template definition and instantiate the function as needed.
 - Feel free to use abbreviated function template with a single auto parameter, or where each auto parameter should be an independent type(when language standard is set to 20 or newer)
+
+**Lvalue reference const**
+
+
+**Pass by lvalue reference**
+- Favour passing by const reference over passing by non-const unless you have a specific reason to do otherwise.(e.g. you need to modify the parameter)
+- Pass fundamental types by value, and class (or struct) types by const reference.
+
+**Pointer**
+- When declaring a pointer type, place the astrisk next to the type name.
+- Always initialize you pointer variables.
+- Value initalize your pointer(to be null pointers) if you are not initializing them with the address of a valid object.
+- Use 'nullptr' when we need a null pointer literal for initialization, assignment or passing a null pointer to a function.
