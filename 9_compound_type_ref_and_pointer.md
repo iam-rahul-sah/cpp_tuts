@@ -627,3 +627,72 @@ Best practice
 
 Favour references over pointer unless the additional capabilities provided by the pointer are needed.
 ```
+
+## Pointer and const
+
+
+### Pointer to const
+
+In C++, using a non-const pointer for a const object is a compile error. 
+As a const object is the one whose value cannot be changed, but using a non-const pointer violates the constness of the object. Hence it gives and error.
+
+We can use a `pointer to const value` or a to point to a const object. To declare a pointer to a const value we use `const` keyword before the pointer's data type.  
+ `const int* ptr{&x};`
+
+Note: A pointer to const is a non-const pointer itself(it is just that it is addressing to a const object). Hence we can change what it is pointing to.
+
+Note: A pointer to const to a non-const object is also allowed.
+
+*Example*
+```cpp
+const int x{5};
+
+int* ptr{&x}; // error
+
+// pointer to const
+const int* ptr{&x}; // allowed, this is a non-const pointer to a const value
+
+// changing the value at the address gives us an error
+*ptr = 10; // error
+
+int y{10};
+// changing what the pointer is pointing to is allowed even to non-const object
+ptr = &y; // allowed
+```
+### const pointer
+We can also make a pointer itself constant. A `const pointer` is the one whose address cannot be changed after initialization. To declare a const pointer we use `const` keyword after the pointer's data type.  
+ `int* const ptr{&x};`
+
+*Example*
+
+```cpp
+int x{5};
+int y{10};
+
+int* const ptr{&x}; // ptr is a const pointer to an integer
+
+// We cannot change what the pointer is pointing to
+
+ptr = &y; // error
+
+// But we can change the value at the address
+*ptr = 10; // allowed
+
+```
+
+### const pointer to a const value
+
+It is possible to declare a `const pointer to a const value` by using the const keyword both before the type and after the astrisk.  
+`const int* const ptr{&x};`
+
+*Example*
+```cpp
+
+const int x{5};
+int y{10};
+
+const int* const ptr{&x}; // ptr is a const pointer to a const value
+const int* const ptr2{&y}; // ptr2 is a const pointer to a const value
+```
+
+A const pointer to a const value is the most restrictive type of pointer. We cannot change what the pointer is pointing to and we cannot change the value at the address.
