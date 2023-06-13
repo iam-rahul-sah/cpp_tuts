@@ -69,3 +69,204 @@ User-defined: A class type or enum type defined by the programmer(including thos
 Program-defined: A class type or enum type defined by the programmer.(excluding those defined in the standard library or implementation-defined library).
 
 ---
+
+## Unscoped enumerations
+
+An **enumeration**(also called as enum) is a compound data type where every possible value is defined as a symbolic constant called an **enumerator**. Enumerations are program-defined types and hence must be defined before they can be used. C++ has two types of enumerations:
+1. Unscoped enumerations
+2. Scoped enumerations
+
+**Unscoped enumerations**
+
+Unscoped enumerations are defined via the `enum` keyword. 
+
+```cpp
+// Example
+// Using constant variables with types alias as alternative to enum
+using Color = int;
+
+constexpr Color red = 0;
+constexpr Color green = 1;
+constexpr Color blue = 2;
+
+int main()
+{
+    Color apple = red;  // This is almost identical to the use of enum
+
+    // But the problem with this approach is that we can assign any integer value to the variable apple
+    Color apple = 5;    // This is valid, though it doesn't make sense
+}
+
+// Usage of enum can solve this problem as the enum type can only hold the values defined as enumerator any other value will result in error 
+enum Color
+{
+    // Here are the enumerators
+    // The symbolic constant(red, green, blue) defines all the possible values this type can hold.
+    // Each enumerator is separated by a comma and not a semicolon.
+    red, 
+    green,
+    blue, // trailing comma is optional, but recommended
+}// Don't forget the semicolon
+
+int main()
+{
+    Color apple = red;
+    Color shirt = blue;
+
+    Color house = 8;   // This is invalid, as 8 is not defined as an enumerator
+    Color cap = white; // This is also invalid, as white is not defined as an enumerator
+}  
+```
+
+**Naming enumerations and enumerators**
+
+**Warning**: Enumerators don't have to be named, but unnamed enumerators should be avoided in modern C++.
+**Best Practice**: Name your *enumerated types starting with a capital letter*. Name your *enumerators starting with a lowercase letter*.
+
+**Enumerated types are distinct types**  
+Each enumerated types you create is considered a distinct types, meaning the compiler can distinguish different enum types(unlike typedefsa and type aliases which are considered non-distinct from the type they are using). 
+
+```cpp
+// using Pet2 = int;
+// using Color2 = int;
+
+// Enum are distinct types
+enum Color
+{
+    red,
+    green,
+    blue
+};
+enum Pet
+{
+    cat,
+    dog,
+    bird
+};
+
+int main()
+{
+    Color shirt{pig}; // Error: pig is a enumerator of Pet, not Color
+    Pet myPet{red};   // Error: red is a enumerator of Color, not Pet
+
+    Pet2 hisPet{8}; // This is valid, as 8 is an int but it is same as int 
+}
+```
+
+**Use cases of enumerations**  
+Because enumerators are descriptive, they are useful for enhancing code documentation and readability. For smallish set of related constants, e.g. days of week, direction, deck of card. Enumerations can also be used to return the status code of some operation from a function, with the return type of the function as the enum type.
+
+Many language use enum for defining boolean values, but in C++ true and false are keyword.
+
+Enum are small and inexpensive to copy. Hence they can be passed by value and return by value.
+
+**Scope of unscoped enumerations**  
+
+The unscoped numerations put the enumerators in the same scope as the enum type itself. This means that the enumerators are visible outside the enum type. This can lead to name collisions. i.e. if a enumerator has the same name as another variable or enumerator in the same scope(global scope or namespace scope) then the program will not compile.
+
+```cpp
+// Example
+
+enum Color  // color is defined in the global namespcae
+{
+    red,    // the enumerators are also defined in the global namespace
+    green,
+    blue
+};
+
+enum Feelings
+{
+    happy,
+    tired,
+    blue   // Error: naming collisions with Color::blue 
+}
+```
+
+Unscoped enumeratos also provide a named scope region for their enumerators(much like a namespace for the variables declared inside of it). But still the unscoped enumerators with same name in the same scope will cause naming collisions.
+
+```cpp
+// Example
+
+enum Color
+{
+    red,
+    green,
+    blue
+};
+
+enum Feeling
+{
+    happy,
+    tired,
+    blue     // naming collision compile time error
+}
+
+int main()
+{
+    Color shirt{Color::red}; // Using enum class as namespace for the enumerator
+
+    return 0;
+}
+```
+Thus, mostly unscoped enumerators are accessed without using the scope resolution operator.
+
+**Avoiding enumeratos naming collisions**
+1. Prefix each enumerator with the name of the enum type.
+
+```cpp
+enum Color
+{
+    color_red,
+    color_green,
+}
+```
+2. Use a namespace for the enum type.
+
+```cpp
+namespace color
+{
+    enum Color
+    {
+        red,
+        green,
+    };
+}
+
+int main()
+{
+    color::Color shirt{color::red};
+}
+```
+
+3. Using scoped enumrations(next topic).
+4. If a enumerator is used only inside a function, then we can define the enum type inside the function closest to the first use to the enumerator. The enum type will also shadow the enumerator from the global namespace.
+
+*Best Practice*: Prefer putting your enumerators inside a named scope region(namespace or class) so the enumerators don't pollute the global namespace.
+
+**Comparing against enumerator**  
+We can use the equality(==) and inequality(!=) operators to compare whether an enumeration has the value of a particular enumeration or not.
+
+```cpp
+// Example
+enum Color
+{
+    red,
+    green,
+    blue,
+}
+
+int main()
+{
+    Color shirt{red};
+
+    if(shirt == red) // This is valid
+    {
+        // Do something
+    }
+    else
+    {
+        // Do something else
+    }
+}
+```
+
