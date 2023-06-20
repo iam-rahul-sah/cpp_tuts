@@ -1,4 +1,4 @@
-# Compound types Enum and Structs
+# Compound types Enum
 
 ## Table of Content
 1. Introduction to user-defined types
@@ -6,14 +6,14 @@
 
 
 ## Introduction to user-defined types.  
-Fundamental types are defined as the part of core C++ language and thus they are available for immediate use. Like int, double we need not to import anything this is also true for the compound types that are simple extension of fundamental types like arrays, pointers, references, functions.
+Fundamental types are defined as the part of core C++ language and thus they are available for immediate use(like int, double), we need not to import anything. This is also true for the compound types that are simple extension of fundamental types like arrays, pointers, references, functions.
 
 But what happens when we need a type that is not provided by C++ or not understood by C++ by default(like fraction). C++ provides a way to define our own types. These types are called user-defined types(or better know as programmer-defined types).
 C++ has two categories of compound types that allows for this:
 1. Enumerated types(including scoped and unscoped enums)
 2. Class types(including structs and unions)
 
-**Defining programme-defined types in C++**  
+**Defining program-defined types in C++**  
 Just like type aliases program defined types must also be defined before they can be used. The definition for a program defined types is called a **type definition**.
 
 ```cpp
