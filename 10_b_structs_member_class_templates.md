@@ -264,3 +264,60 @@ int main()
     return 0;
 }
 ```
+
+### Accessing struct members using pointers and references.
+
+We can access a member of a struct using a member selection operator(.). Since reference to any object is the object itself, so we can directly access the member of referenced struct using a member selection operator(.). Whereas in case of a pointer(that does not point to a struct direclty but stores it address) we would need to first dereference the pointer and then use the member selection operator(.) which is not the best solution. C++ offers a **"member selection from pointer operator(->)"** also know as the **"arrow operator"** that can be used to select members from a pointer to an object. We can use the arrow operator and the member selection operator to access the members of a struct object through a pointer to that struct object(i.e. for nested structs).
+
+
+```cpp
+struct DOB
+{
+    int date{};
+    int month{};
+    int year{};
+};
+struct Employee
+{
+    std::string employeeName{};
+    int employeeID{};
+    DOB employeeDOB{};
+};
+
+int main()
+{
+    Employee rahul{"rahul", 01, {10,12,2002}};   // A struct object
+
+    // creating a reference to a struct object
+    Employee& refRahul = rahul;
+
+    // Accessing the data member of struct using "member selection operator"
+    std::cout << "Employee name is " << refRahul.employeeName << '\n';
+    std::cout << "Employee ID is " << refRahul.employeeID << '\n';
+    std::cout << "Employee DOB is " << refRahul.employeeDOB.date << '/' << refRahul.employeeDOB.month << '/' << refRahul.employeeDOB.year << '\n';
+
+    // creating a pointer to a struct object
+    Employee* ptr{&rahul};
+
+    // std::cout << "/Employee name is " << ptr.employeeName << '\n'; // This gives an error as ptr is address to the struct and not the struct itself we can
+    // something like this
+    std::cout << "Employee name is" << (*ptr).employeeName << '\n'; // this would work but it ambigious 
+
+    // Instead C++ provides us with 
+    std::cout << "Employee name is " << ptr->employeeName << '\n';
+    std::cout << "Employee ID is " << ptr->employeeID << '\n';
+
+    // Also we can use the arrow operator and the member selection operator in combination
+    std::cout << "Employee DOB is " << ptr->employeeDOB.date << '/' << ptr->employeeDOB.month << '/' << ptr->employeeDOB.year << '\n';
+
+    return 0;
+}
+```
+
+**Best practice:** When using a pointer to access thee value of a member, use the member selection from pointer operator(->) instead of the member selection operator(.).
+
+---
+
+### Class templates
+
+### Class template argument deduction and deduction guide

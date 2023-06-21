@@ -1,0 +1,60 @@
+<mxfile host="65bd71144e">
+    <diagram id="tYzAap4HUbZaijhKtSoC" name="Page-1">
+        <mxGraphModel dx="765" dy="615" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="4" value="Checking for syntax error" style="edgeStyle=none;html=1;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Source Code" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="30" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Object file&lt;br&gt;(.o extension)" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="170" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="70" y="270" width="120" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="source file&lt;br&gt;calculator.cpp" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="11">
+                    <mxGeometry width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="object file&lt;br&gt;calculator.o" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="11">
+                    <mxGeometry y="140" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="compile" style="edgeStyle=none;html=1;" edge="1" parent="11" source="5" target="6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="320" y="270" width="120" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="source file&lt;br&gt;fraction.cpp" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="12">
+                    <mxGeometry width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="object file&lt;br&gt;fraction.o" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="12">
+                    <mxGeometry y="140" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="compile" style="edgeStyle=none;html=1;" edge="1" parent="12" source="13" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="550" y="270" width="120" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="source file&lt;br&gt;math.cpp" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="16">
+                    <mxGeometry width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="object file&lt;br&gt;math.o" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="16">
+                    <mxGeometry y="140" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="edgeStyle=none;html=1;" edge="1" parent="16" source="17" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="compile" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="19">
+                    <mxGeometry x="0.235" y="1" relative="1" as="geometry">
+                        <mxPoint x="-1" y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
