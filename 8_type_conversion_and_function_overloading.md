@@ -578,7 +578,7 @@ int main()
 {
     print('a', 'b')        // This function resolve to print(char c, int x) as it is a better match for the second argument(i.e. numeric converison from char to int) and no worse for the first argument(i.e. exact match for char to char).
 }
-
+```
 # 12. Default arguments
 
 A *default argument* is a default value provided for a function parameter. If the caller does not provide an argument for that parameter, the default value will be used instead.
